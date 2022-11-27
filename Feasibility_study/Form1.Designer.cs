@@ -86,7 +86,7 @@
             // 
             // btn_start
             // 
-            this.btn_start.Location = new System.Drawing.Point(337, 155);
+            this.btn_start.Location = new System.Drawing.Point(474, 189);
             this.btn_start.Name = "btn_start";
             this.btn_start.Size = new System.Drawing.Size(92, 56);
             this.btn_start.TabIndex = 0;
@@ -96,7 +96,7 @@
             // 
             // btn_spravka
             // 
-            this.btn_spravka.Location = new System.Drawing.Point(337, 232);
+            this.btn_spravka.Location = new System.Drawing.Point(474, 266);
             this.btn_spravka.Name = "btn_spravka";
             this.btn_spravka.Size = new System.Drawing.Size(92, 56);
             this.btn_spravka.TabIndex = 1;
@@ -106,7 +106,7 @@
             // 
             // btn_about
             // 
-            this.btn_about.Location = new System.Drawing.Point(337, 312);
+            this.btn_about.Location = new System.Drawing.Point(474, 346);
             this.btn_about.Name = "btn_about";
             this.btn_about.Size = new System.Drawing.Size(92, 56);
             this.btn_about.TabIndex = 2;
@@ -121,7 +121,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(263, 24);
+            this.label1.Location = new System.Drawing.Point(400, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(251, 108);
             this.label1.TabIndex = 3;

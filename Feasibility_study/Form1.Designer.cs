@@ -35,35 +35,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label64 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
-            this.textBox36 = new System.Windows.Forms.TextBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.outak = new System.Windows.Forms.TextBox();
+            this.outJetana = new System.Windows.Forms.TextBox();
+            this.outJetpro = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Calc_KTC = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,17 +49,28 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calc_KTC = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.outJetpro = new System.Windows.Forms.TextBox();
-            this.outJetana = new System.Windows.Forms.TextBox();
-            this.outak = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label64 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calc_Data = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TXTITOGORUK = new System.Windows.Forms.TextBox();
+            this.TXTITOGOPROG = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_start
@@ -138,7 +127,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1029, 576);
+            this.tabControl1.Size = new System.Drawing.Size(1032, 603);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
@@ -154,322 +143,74 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1021, 550);
+            this.tabPage1.Size = new System.Drawing.Size(1024, 577);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Расчет КТС";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // label4
             // 
-            this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.textBox34);
-            this.tabPage2.Controls.Add(this.textBox32);
-            this.tabPage2.Controls.Add(this.textBox36);
-            this.tabPage2.Controls.Add(this.textBox35);
-            this.tabPage2.Controls.Add(this.textBox31);
-            this.tabPage2.Controls.Add(this.textBox37);
-            this.tabPage2.Controls.Add(this.textBox33);
-            this.tabPage2.Controls.Add(this.textBox38);
-            this.tabPage2.Controls.Add(this.textBox39);
-            this.tabPage2.Controls.Add(this.label29);
-            this.tabPage2.Controls.Add(this.textBox30);
-            this.tabPage2.Controls.Add(this.label30);
-            this.tabPage2.Controls.Add(this.textBox29);
-            this.tabPage2.Controls.Add(this.textBox28);
-            this.tabPage2.Controls.Add(this.label28);
-            this.tabPage2.Controls.Add(this.label27);
-            this.tabPage2.Controls.Add(this.dateTimePicker1);
-            this.tabPage2.Controls.Add(this.label64);
-            this.tabPage2.Controls.Add(this.label25);
-            this.tabPage2.Controls.Add(this.label26);
-            this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.label23);
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.label20);
-            this.tabPage2.Controls.Add(this.label21);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1021, 550);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "План-график работ";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(718, 507);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Ak";
             // 
-            // tabPage3
+            // label3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1021, 550);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Расчет затрат на разработку проекта и внедрение аналога";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(453, 507);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 16);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Jэту Аналог";
             // 
-            // tabPage4
+            // outak
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1021, 550);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Расчет эксплуатационных затрат";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.outak.Location = new System.Drawing.Point(756, 503);
+            this.outak.Name = "outak";
+            this.outak.ReadOnly = true;
+            this.outak.Size = new System.Drawing.Size(100, 20);
+            this.outak.TabIndex = 6;
             // 
-            // tabPage5
+            // outJetana
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1021, 550);
-            this.tabPage5.TabIndex = 5;
-            this.tabPage5.Text = "Расчет показателей экономической эффективности";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.outJetana.Location = new System.Drawing.Point(561, 503);
+            this.outJetana.Name = "outJetana";
+            this.outJetana.ReadOnly = true;
+            this.outJetana.Size = new System.Drawing.Size(100, 20);
+            this.outJetana.TabIndex = 5;
             // 
-            // label21
+            // outJetpro
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label21.Location = new System.Drawing.Point(225, 22);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(109, 18);
-            this.label21.TabIndex = 2;
-            this.label21.Text = "Испольнители";
+            this.outJetpro.Location = new System.Drawing.Point(317, 503);
+            this.outJetpro.Name = "outJetpro";
+            this.outJetpro.ReadOnly = true;
+            this.outJetpro.Size = new System.Drawing.Size(100, 20);
+            this.outJetpro.TabIndex = 4;
             // 
-            // label20
+            // label2
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.Location = new System.Drawing.Point(18, 22);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(152, 18);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Содержание работы";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(220, 507);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Jэту Проект ";
             // 
-            // label22
+            // Calc_KTC
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label22.Location = new System.Drawing.Point(384, 4);
-            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label22.MaximumSize = new System.Drawing.Size(135, 244);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(117, 36);
-            this.label22.TabIndex = 4;
-            this.label22.Text = "Длительность, дни";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label23.Location = new System.Drawing.Point(621, 4);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(118, 18);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "График работы";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label24.Location = new System.Drawing.Point(581, 22);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(61, 18);
-            this.label24.TabIndex = 6;
-            this.label24.Text = "Начало";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label25.Location = new System.Drawing.Point(718, 22);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(51, 18);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "Конец";
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label64.Location = new System.Drawing.Point(554, 76);
-            this.label64.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(98, 17);
-            this.label64.TabIndex = 37;
-            this.label64.Text = "Дата начала:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(673, 72);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
-            this.dateTimePicker1.TabIndex = 36;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label26.Location = new System.Drawing.Point(18, 77);
-            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(441, 16);
-            this.label26.TabIndex = 6;
-            this.label26.Text = "1. Подготовка процесса разработки и анализ требований";
-            // 
-            // textBox34
-            // 
-            this.textBox34.Location = new System.Drawing.Point(701, 198);
-            this.textBox34.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.ReadOnly = true;
-            this.textBox34.Size = new System.Drawing.Size(86, 20);
-            this.textBox34.TabIndex = 14;
-            // 
-            // textBox35
-            // 
-            this.textBox35.Location = new System.Drawing.Point(557, 202);
-            this.textBox35.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.ReadOnly = true;
-            this.textBox35.Size = new System.Drawing.Size(85, 20);
-            this.textBox35.TabIndex = 13;
-            // 
-            // textBox36
-            // 
-            this.textBox36.Location = new System.Drawing.Point(701, 174);
-            this.textBox36.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.ReadOnly = true;
-            this.textBox36.Size = new System.Drawing.Size(86, 20);
-            this.textBox36.TabIndex = 12;
-            // 
-            // textBox37
-            // 
-            this.textBox37.Location = new System.Drawing.Point(557, 178);
-            this.textBox37.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.ReadOnly = true;
-            this.textBox37.Size = new System.Drawing.Size(85, 20);
-            this.textBox37.TabIndex = 11;
-            // 
-            // textBox38
-            // 
-            this.textBox38.Location = new System.Drawing.Point(377, 202);
-            this.textBox38.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(114, 20);
-            this.textBox38.TabIndex = 10;
-            // 
-            // textBox39
-            // 
-            this.textBox39.Location = new System.Drawing.Point(376, 178);
-            this.textBox39.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(114, 20);
-            this.textBox39.TabIndex = 9;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label29.Location = new System.Drawing.Point(224, 183);
-            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label29.MaximumSize = new System.Drawing.Size(150, 406);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(104, 34);
-            this.label29.TabIndex = 8;
-            this.label29.Text = "Руководитель Программист";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label30.Location = new System.Drawing.Point(18, 183);
-            this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label30.MaximumSize = new System.Drawing.Size(150, 406);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(134, 34);
-            this.label30.TabIndex = 7;
-            this.label30.Text = "1.2 Сбор исходных данных";
-            // 
-            // textBox32
-            // 
-            this.textBox32.Location = new System.Drawing.Point(701, 137);
-            this.textBox32.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.ReadOnly = true;
-            this.textBox32.Size = new System.Drawing.Size(86, 20);
-            this.textBox32.TabIndex = 14;
-            // 
-            // textBox33
-            // 
-            this.textBox33.Location = new System.Drawing.Point(557, 137);
-            this.textBox33.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.ReadOnly = true;
-            this.textBox33.Size = new System.Drawing.Size(85, 20);
-            this.textBox33.TabIndex = 13;
-            // 
-            // textBox31
-            // 
-            this.textBox31.Location = new System.Drawing.Point(701, 113);
-            this.textBox31.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.ReadOnly = true;
-            this.textBox31.Size = new System.Drawing.Size(86, 20);
-            this.textBox31.TabIndex = 12;
-            // 
-            // textBox30
-            // 
-            this.textBox30.Location = new System.Drawing.Point(557, 113);
-            this.textBox30.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.ReadOnly = true;
-            this.textBox30.Size = new System.Drawing.Size(85, 20);
-            this.textBox30.TabIndex = 11;
-            // 
-            // textBox29
-            // 
-            this.textBox29.Location = new System.Drawing.Point(376, 137);
-            this.textBox29.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(114, 20);
-            this.textBox29.TabIndex = 10;
-            // 
-            // textBox28
-            // 
-            this.textBox28.Location = new System.Drawing.Point(376, 113);
-            this.textBox28.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(114, 20);
-            this.textBox28.TabIndex = 9;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label28.Location = new System.Drawing.Point(225, 118);
-            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label28.MaximumSize = new System.Drawing.Size(150, 406);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(104, 34);
-            this.label28.TabIndex = 8;
-            this.label28.Text = "Руководитель Программист";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label27.Location = new System.Drawing.Point(18, 118);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.MaximumSize = new System.Drawing.Size(150, 406);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(120, 36);
-            this.label27.TabIndex = 7;
-            this.label27.Text = "1.1 Постановка задачи";
+            this.Calc_KTC.Location = new System.Drawing.Point(8, 499);
+            this.Calc_KTC.Name = "Calc_KTC";
+            this.Calc_KTC.Size = new System.Drawing.Size(175, 33);
+            this.Calc_KTC.TabIndex = 2;
+            this.Calc_KTC.Text = "РАССЧИТАТЬ";
+            this.Calc_KTC.UseVisualStyleBackColor = true;
+            this.Calc_KTC.Click += new System.EventHandler(this.Calc_KTC_Click);
             // 
             // dataGridView1
             // 
@@ -533,75 +274,178 @@
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             // 
-            // Calc_KTC
+            // tabPage2
             // 
-            this.Calc_KTC.Location = new System.Drawing.Point(8, 499);
-            this.Calc_KTC.Name = "Calc_KTC";
-            this.Calc_KTC.Size = new System.Drawing.Size(175, 33);
-            this.Calc_KTC.TabIndex = 2;
-            this.Calc_KTC.Text = "РАССЧИТАТЬ";
-            this.Calc_KTC.UseVisualStyleBackColor = true;
-            this.Calc_KTC.Click += new System.EventHandler(this.Calc_KTC_Click);
+            this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.TXTITOGOPROG);
+            this.tabPage2.Controls.Add(this.TXTITOGORUK);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.Calc_Data);
+            this.tabPage2.Controls.Add(this.dataGridView3);
+            this.tabPage2.Controls.Add(this.dateTimePicker1);
+            this.tabPage2.Controls.Add(this.label64);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1024, 577);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "План-график работ";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // dateTimePicker1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(220, 507);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Jэту Проект ";
+            this.dateTimePicker1.Location = new System.Drawing.Point(470, 9);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker1.TabIndex = 36;
             // 
-            // outJetpro
+            // label64
             // 
-            this.outJetpro.Location = new System.Drawing.Point(317, 503);
-            this.outJetpro.Name = "outJetpro";
-            this.outJetpro.ReadOnly = true;
-            this.outJetpro.Size = new System.Drawing.Size(100, 20);
-            this.outJetpro.TabIndex = 4;
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label64.Location = new System.Drawing.Point(359, 12);
+            this.label64.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(98, 17);
+            this.label64.TabIndex = 37;
+            this.label64.Text = "Дата начала:";
             // 
-            // outJetana
+            // tabPage3
             // 
-            this.outJetana.Location = new System.Drawing.Point(561, 503);
-            this.outJetana.Name = "outJetana";
-            this.outJetana.ReadOnly = true;
-            this.outJetana.Size = new System.Drawing.Size(100, 20);
-            this.outJetana.TabIndex = 5;
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1021, 550);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Расчет затрат на разработку проекта и внедрение аналога";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // outak
+            // tabPage4
             // 
-            this.outak.Location = new System.Drawing.Point(756, 503);
-            this.outak.Name = "outak";
-            this.outak.ReadOnly = true;
-            this.outak.Size = new System.Drawing.Size(100, 20);
-            this.outak.TabIndex = 6;
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(1021, 550);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Расчет эксплуатационных затрат";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // tabPage5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(453, 507);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 16);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Jэту Аналог";
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(1021, 550);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "Расчет показателей экономической эффективности";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // dataGridView3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(718, 507);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Ak";
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column10,
+            this.Column11});
+            this.dataGridView3.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dataGridView3.Location = new System.Drawing.Point(6, 44);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(1012, 468);
+            this.dataGridView3.TabIndex = 38;
+            // 
+            // Column7
+            // 
+            this.Column7.Frozen = true;
+            this.Column7.HeaderText = "Содержание работы";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            this.Column7.Width = 400;
+            // 
+            // Column8
+            // 
+            this.Column8.Frozen = true;
+            this.Column8.HeaderText = "Исполнители";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 150;
+            // 
+            // Column9
+            // 
+            this.Column9.Frozen = true;
+            this.Column9.HeaderText = "Длительность, дни";
+            this.Column9.Name = "Column9";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "График работ. Начало";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
+            this.Column10.Width = 150;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "График работ. Конец";
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 150;
+            // 
+            // Calc_Data
+            // 
+            this.Calc_Data.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Calc_Data.Location = new System.Drawing.Point(6, 530);
+            this.Calc_Data.Name = "Calc_Data";
+            this.Calc_Data.Size = new System.Drawing.Size(137, 36);
+            this.Calc_Data.TabIndex = 39;
+            this.Calc_Data.Text = "РАССЧИТАТЬ";
+            this.Calc_Data.UseVisualStyleBackColor = true;
+            this.Calc_Data.Click += new System.EventHandler(this.Calc_Data_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(605, 543);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(287, 16);
+            this.label5.TabIndex = 40;
+            this.label5.Text = "Количество дней, работать программисту ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(161, 540);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(286, 16);
+            this.label6.TabIndex = 41;
+            this.label6.Text = "Количество дней, работать руководителю";
+            // 
+            // TXTITOGORUK
+            // 
+            this.TXTITOGORUK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TXTITOGORUK.Location = new System.Drawing.Point(454, 537);
+            this.TXTITOGORUK.Name = "TXTITOGORUK";
+            this.TXTITOGORUK.ReadOnly = true;
+            this.TXTITOGORUK.Size = new System.Drawing.Size(100, 22);
+            this.TXTITOGORUK.TabIndex = 42;
+            // 
+            // TXTITOGOPROG
+            // 
+            this.TXTITOGOPROG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TXTITOGOPROG.Location = new System.Drawing.Point(898, 540);
+            this.TXTITOGOPROG.Name = "TXTITOGOPROG";
+            this.TXTITOGOPROG.ReadOnly = true;
+            this.TXTITOGOPROG.Size = new System.Drawing.Size(100, 22);
+            this.TXTITOGOPROG.TabIndex = 43;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1029, 576);
+            this.ClientSize = new System.Drawing.Size(1032, 603);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_about);
@@ -614,9 +458,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,31 +479,8 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox textBox28;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.TextBox textBox34;
-        private System.Windows.Forms.TextBox textBox35;
-        private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.TextBox textBox37;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -673,6 +495,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.Button Calc_Data;
+        private System.Windows.Forms.TextBox TXTITOGOPROG;
+        private System.Windows.Forms.TextBox TXTITOGORUK;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
     }
 }
 

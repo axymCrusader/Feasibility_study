@@ -15,9 +15,9 @@ namespace Feasibility_study
     public partial class Form1 : Form
     {
         int ITOGO_day1, ITOGO_day2;
-        double Wd;// = 0.4;
-        double Wh; // = 0.22 + 0.029 + 0.051 + 0.002; // ПФ + ФСС + ФФОМС + Стра.взносы
-        double Wc;// = 0.6; //накладные расходы  
+        //double Wd;// = 0.4;
+        //double Wh; // = 0.22 + 0.029 + 0.051 + 0.002; // ПФ + ФСС + ФФОМС + Стра.взносы
+        //double Wc;// = 0.6; //накладные расходы  
 
         public Form1()
         {
@@ -29,46 +29,46 @@ namespace Feasibility_study
             tabControl1.Visible = false;
 
             string[] row1 = new string[] { "Подготовка процесса разработки и анализ требований" };
-            string[] row1_1 = new string[] { "Постановка задачи", "Руководитель" };
-            string[] row1_2 = new string[] { "", "Программист" };
-            string[] row1_3 = new string[] { "Сбор исходных данных", "Руководитель" };
-            string[] row1_4 = new string[] { "", "Программист" };
-            string[] row1_5 = new string[] { "Анализ существующих методов решения задачи и программных средств", "Руководитель" };
-            string[] row1_6 = new string[] { "", "Программист" };
-            string[] row1_7 = new string[] { "Обоснование принципиальной необходимости разработки", "Руководитель" };
-            string[] row1_8 = new string[] { "", "Программист" };
-            string[] row1_9 = new string[] { "Определение и анализ требований к программе", "Руководитель" };
-            string[] row1_10 = new string[] { "", "Программист" };
-            string[] row1_11 = new string[] { "Определение структуры входных и выходных данных", "Руководитель" };
-            string[] row1_12 = new string[] { "", "Программист" };
-            string[] row1_13 = new string[] { "Выбор технических средств и программных средств реализации", "Руководитель" };
-            string[] row1_14 = new string[] { "", "Программист" };
-            string[] row1_15 = new string[] { "Согласование и утверждение технического задания", "Руководитель" };
-            string[] row1_16 = new string[] { "", "Программист" };
+            string[] row1_1 = new string[] { "Постановка задачи", "Руководитель","1" };
+            string[] row1_2 = new string[] { "", "Программист","3" };
+            string[] row1_3 = new string[] { "Сбор исходных данных", "Руководитель","5" };
+            string[] row1_4 = new string[] { "", "Программист","14" };
+            string[] row1_5 = new string[] { "Анализ существующих методов решения задачи и программных средств", "Руководитель","0"};
+            string[] row1_6 = new string[] { "", "Программист","6"};
+            string[] row1_7 = new string[] { "Обоснование принципиальной необходимости разработки", "Руководитель", "1"};
+            string[] row1_8 = new string[] { "", "Программист","2" };
+            string[] row1_9 = new string[] { "Определение и анализ требований к программе", "Руководитель","1" };
+            string[] row1_10 = new string[] { "", "Программист","3" };
+            string[] row1_11 = new string[] { "Определение структуры входных и выходных данных", "Руководитель","1" };
+            string[] row1_12 = new string[] { "", "Программист","5" };
+            string[] row1_13 = new string[] { "Выбор технических средств и программных средств реализации", "Руководитель","1" };
+            string[] row1_14 = new string[] { "", "Программист","3"};
+            string[] row1_15 = new string[] { "Согласование и утверждение технического задания", "Руководитель","1" };
+            string[] row1_16 = new string[] { "", "Программист","3" };
 
             string[] row2 = new string[] { "Проектирование" };
-            string[] row2_1 = new string[] { "Проектирование программной архитектуры", "Руководитель" };
-            string[] row2_2 = new string[] { "", "Программист" };
-            string[] row2_3 = new string[] { "Техническое проектирование компонентов программы", "Руководитель" };
-            string[] row2_4 = new string[] { "", "Программист" };
+            string[] row2_1 = new string[] { "Проектирование программной архитектуры", "Руководитель","0"};
+            string[] row2_2 = new string[] { "", "Программист","3" };
+            string[] row2_3 = new string[] { "Техническое проектирование компонентов программы", "Руководитель","0" };
+            string[] row2_4 = new string[] { "", "Программист","7" };
 
             string[] row3 = new string[] { "Программирование и тестирование программных модулей" };
-            string[] row3_1 = new string[] { "Программирование модулей в выбранной среде программирования", "Руководитель" };
-            string[] row3_2 = new string[] { "", "Программист" };
-            string[] row3_3 = new string[] { "Тестирование программных модулей", "Руководитель" };
-            string[] row3_4 = new string[] { "", "Программист" };
-            string[] row3_5 = new string[] { "Сборка и испытание программы", "Руководитель" };
-            string[] row3_6 = new string[] { "", "Программист" };
-            string[] row3_7 = new string[] { "Анализ результатов испытаний", "Руководитель" };
-            string[] row3_8 = new string[] { "", "Программист" };
+            string[] row3_1 = new string[] { "Программирование модулей в выбранной среде программирования", "Руководитель","0" };
+            string[] row3_2 = new string[] { "", "Программист","13" };
+            string[] row3_3 = new string[] { "Тестирование программных модулей", "Руководитель","0" };
+            string[] row3_4 = new string[] { "", "Программист","21" };
+            string[] row3_5 = new string[] { "Сборка и испытание программы", "Руководитель","2" };
+            string[] row3_6 = new string[] { "", "Программист","5" };
+            string[] row3_7 = new string[] { "Анализ результатов испытаний", "Руководитель","1" };
+            string[] row3_8 = new string[] { "", "Программист","5" };
 
             string[] row4 = new string[] { "Оформление рабочей документации" };
-            string[] row4_1 = new string[] { "Проведение расчетов показателей безопасности жизнедеятельности", "Руководитель" };
-            string[] row4_2 = new string[] { "", "Программист" };
-            string[] row4_3 = new string[] { "Проведение экономических расчетов", "Руководитель" };
-            string[] row4_4 = new string[] { "", "Программист" };
-            string[] row4_5 = new string[] { "Оформление пояснительной записки", "Руководитель" };
-            string[] row4_6 = new string[] { "", "Программист" };
+            string[] row4_1 = new string[] { "Проведение расчетов показателей безопасности жизнедеятельности", "Руководитель","0" };
+            string[] row4_2 = new string[] { "", "Программист","3" };
+            string[] row4_3 = new string[] { "Проведение экономических расчетов", "Руководитель","0" };
+            string[] row4_4 = new string[] { "", "Программист","4" };
+            string[] row4_5 = new string[] { "Оформление пояснительной записки", "Руководитель","5" };
+            string[] row4_6 = new string[] { "", "Программист","15" };
 
             object[] rows = new object[]
             {
@@ -82,24 +82,23 @@ namespace Feasibility_study
             {
                 dataGridView3.Rows.Add(rowArray);
             }
-            /*
+            
             dataGridView3.Rows[1].Cells[3].Style.BackColor = Color.Gold;
-            dataGridView3.Rows[2].Cells[3].Style.BackColor = Color.Gold;
             
             for (int i = 0; i < 5; i++) //Красим заголовки графика работ по строкам
             {
-                dataGridView3.Rows[0].Cells[i].Style.BackColor = Color.Red;
-                dataGridView3.Rows[17].Cells[i].Style.BackColor = Color.Red;
-                dataGridView3.Rows[22].Cells[i].Style.BackColor = Color.Red;
-                dataGridView3.Rows[31].Cells[i].Style.BackColor = Color.Red;
-                dataGridView3.Rows[38].Cells[i].Style.BackColor = Color.Gold;
-                dataGridView3.Rows[39].Cells[i].Style.BackColor = Color.Gold;
+                dataGridView3.Rows[0].Cells[i].Style.BackColor = Color.DarkGray;
+                dataGridView3.Rows[17].Cells[i].Style.BackColor = Color.DarkGray;
+                dataGridView3.Rows[22].Cells[i].Style.BackColor = Color.DarkGray;
+                dataGridView3.Rows[31].Cells[i].Style.BackColor = Color.DarkGray;
+
             }
-            */
+            
             dataGridView3.Rows[0].Cells[2].ReadOnly = true; //запрещаем ввод определенной ячейки
             dataGridView3.Rows[17].Cells[2].ReadOnly = true;
             dataGridView3.Rows[22].Cells[2].ReadOnly = true;
             dataGridView3.Rows[31].Cells[2].ReadOnly = true;
+            Calc_Data_Click(sender,e);
         }
 
         private void btn_about_Click(object sender, EventArgs e)
@@ -118,8 +117,7 @@ namespace Feasibility_study
         }
         private void btn_spravka_Click(object sender, EventArgs e)
         {
-            enquiry pdf = new enquiry();
-            pdf.Show();
+            System.Diagnostics.Process.Start("ТЭО справка.pdf");
         }
 
         private void Calc_KTC_Click(object sender, EventArgs e)
@@ -139,7 +137,7 @@ namespace Feasibility_study
             }
             if (sum3 != 1)
             {
-                MessageBox.Show("Коэффициент весомости не равен 1");
+                MessageBox.Show("Коэффициент весомости не равен 1" + ", Он равен: " + sum3 );
             }
             else
             {
@@ -182,124 +180,6 @@ namespace Feasibility_study
                 if (!(Char.IsDigit(e.KeyChar)) && !((e.KeyChar == ',')) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
         }
-
-        private void CALCK_Click(object sender, EventArgs e)
-        {
-            double dn = 0;
-            if (textBox30.Text != "")
-                dn = double.Parse(textBox30.Text); //кол дней в мес
-
-            double incom1;
-            int incom2;
-            foreach (DataGridViewRow row in dataGridView2.Rows)
-            {
-                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
-
-                incom1 = incom1 / dn;
-                incom1 = Math.Round(incom1, 2);
-                row.Cells[2].Value = incom1; //Средняя дневная ставка 
-
-
-                dataGridView2.Rows[0].Cells[3].Value = ITOGO_day1;
-                dataGridView2.Rows[1].Cells[3].Value = ITOGO_day2;
-
-                incom2 = Convert.ToInt32(row.Cells[3].Value);
-                row.Cells[4].Value = incom1 * incom2;
-            }
-
-            if (textBox14.Text != "")
-                Wc = double.Parse(textBox14.Text); //накладные расходы  
-
-            if ((textBox9.Text != "") || (textBox10.Text != "") || (textBox11.Text != "") || (textBox12.Text != ""))
-                Wh = double.Parse(textBox9.Text) + double.Parse(textBox10.Text) + double.Parse(textBox11.Text) + double.Parse(textBox12.Text); // ПФ + ФСС + ФФОМС + Стра.взносы
-
-            if ((textBox13.Text != "") || (textBox15.Text != ""))
-                Wd = double.Parse(textBox13.Text) + double.Parse(textBox15.Text);  //коэффициент, учитывающий дополнительную заработную плату в долях к основной заработной плате 
-
-
-            double ITOGO_OZP = 0, Sum_Mat = 0;
-            int Tm = 0;
-            double Kp, Kr, Sm = 0, Km = 0;
-
-
-            if (textBox18.Text != "")
-                Tm = Convert.ToInt32(textBox18.Text) * ITOGO_day2; //машинное время компьютера
-
-
-            if (textBox17.Text != "")
-                Sm = double.Parse(textBox17.Text); //стоимость 1 часа машинного времени, 
-
-
-            if (textBox16.Text != "")
-                Km = double.Parse(textBox16.Text); //коэффициент мультипрограммности   
-
-
-
-            foreach (DataGridViewRow row in dataGridView2.Rows)
-            {
-                ITOGO_OZP += Convert.ToDouble(row.Cells[4].Value);
-            }
-            foreach (DataGridViewRow row in dataGridView4.Rows)
-            {
-                Sum_Mat += Convert.ToDouble(row.Cells[4].Value);
-            }
-            Kp = ITOGO_OZP * ((1 + Wd) * (1 + Wh) + Wc) + Tm * Sm * Km + Sum_Mat; //Капитальнное вложение
-            Kp = Math.Round(Kp, 2); //Округлил до десятых
-            textBox4.Text = Kp.ToString();
-
-            //--------- ?????????????????????
-            double Sum_Ob = 0;
-            int Uk = 0; //частота (периодичность) решения к-й задачи, дней /год 
-            int Dk = 0;
-            int H = 0;
-
-            if (textBox19.Text != "")
-                Dk = Convert.ToInt32(textBox19.Text);
-
-            if (textBox35.Text != "")
-                Uk = Convert.ToInt32(textBox35.Text);
-
-            if (textBox20.Text != "")
-                H = Convert.ToInt32(textBox20.Text); //норматив среднесуточной загрузки, час./день    
-
-            double tx = 0; //трудоемкость однократной обработки информации по к-й задаче на j - м виде технических средств, часов машинного времени
-            if (textBox29.Text != "")
-                tx = double.Parse(textBox29.Text);
-
-            foreach (DataGridViewRow row in dataGridView5.Rows) //Сумма оборудования
-            {
-                Sum_Ob += Convert.ToDouble(row.Cells[3].Value);
-            }
-
-            Kr = Math.Round(Sum_Ob * tx * Uk / (Dk * H), 2);
-            textBox5.Text = Kr.ToString();
-
-            //------------           
-            textBox6.Text = Math.Round(Kr + Kp, 2).ToString();
-
-            dataGridView13.Rows[0].Cells[1].Value = Math.Round(ITOGO_OZP, 2); //ОЗП
-            dataGridView13.Rows[1].Cells[1].Value = Math.Round(ITOGO_OZP * Wd, 2); //Дополнительная зарплата
-            dataGridView13.Rows[2].Cells[1].Value = Math.Round((ITOGO_OZP + (ITOGO_OZP * Wd)) * Wh, 2);// Отчисления на социальные нужды 
-            dataGridView13.Rows[3].Cells[1].Value = Math.Round(Sum_Mat, 2); //Затраты на материалы 
-            dataGridView13.Rows[4].Cells[1].Value = Math.Round(Tm * Sm, 2);
-            dataGridView13.Rows[5].Cells[1].Value = Math.Round(ITOGO_OZP * Wc, 2); //Накладные расходы организации 
-
-            double sum = 0;
-            for (int i = 0; i <= 5; i++)
-            {
-                sum += Convert.ToDouble(dataGridView13.Rows[i].Cells[1].Value);
-            }
-            dataGridView13.Rows[6].Cells[1].Value = sum; //ИТОГО 
-
-
-            double ITOGO_Zatr = 0;
-            foreach (DataGridViewRow row in dataGridView12.Rows)
-            {
-                ITOGO_Zatr += Convert.ToDouble(row.Cells[1].Value);
-            }
-            textBox31.Text = ITOGO_Zatr.ToString();
-        }
-
         private void Calc_Data_Click(object sender, EventArgs e)
         {
             DateTime date1 = new DateTime();

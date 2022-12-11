@@ -4,10 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 
 namespace Feasibility_study
@@ -15,9 +15,9 @@ namespace Feasibility_study
     public partial class Form1 : Form
     {
         int ITOGO_day1, ITOGO_day2;
-        //double Wd;// = 0.4;
-        //double Wh; // = 0.22 + 0.029 + 0.051 + 0.002; // ПФ + ФСС + ФФОМС + Стра.взносы
-        //double Wc;// = 0.6; //накладные расходы  
+        double Wd;// = 0.4;
+        double Wh; // = 0.22 + 0.029 + 0.051 + 0.002; // ПФ + ФСС + ФФОМС + Стра.взносы
+        double Wc;// = 0.6; //накладные расходы  
 
         public Form1()
         {
@@ -93,12 +93,30 @@ namespace Feasibility_study
                 dataGridView3.Rows[31].Cells[i].Style.BackColor = Color.DarkGray;
 
             }
-            
+            dataGridView4.Rows.Add(5);
+            dataGridView5.Rows.Add(5);
+
             dataGridView3.Rows[0].Cells[2].ReadOnly = true; //запрещаем ввод определенной ячейки
             dataGridView3.Rows[17].Cells[2].ReadOnly = true;
             dataGridView3.Rows[22].Cells[2].ReadOnly = true;
             dataGridView3.Rows[31].Cells[2].ReadOnly = true;
-            Calc_Data_Click(sender,e);
+
+            dataGridView2.Rows.Add(2);
+            dataGridView2.Rows[0].Cells[0].Value = "Руководитель";
+            dataGridView2.Rows[1].Cells[0].Value = "Программист";
+            dataGridView2.Rows[0].Cells[2].Value = "1";
+            dataGridView2.Rows[1].Cells[2].Value = "0";
+
+            dataGridView13.Rows.Add(7);
+            dataGridView13.Rows[0].Cells[0].Value = "Основная заработная плата";
+            dataGridView13.Rows[1].Cells[0].Value = "Дополнительная зарплата";
+            dataGridView13.Rows[2].Cells[0].Value = "Отчисления на социальные нужды";
+            dataGridView13.Rows[3].Cells[0].Value = "Затраты на материалы ";
+            dataGridView13.Rows[4].Cells[0].Value = "Затраты на машинное время";
+            dataGridView13.Rows[5].Cells[0].Value = "Накладные расходы организации";
+            dataGridView13.Rows[6].Cells[0].Value = "Итого";
+
+            //Calc_Data_Click(sender,e);
         }
 
         private void btn_about_Click(object sender, EventArgs e)
@@ -180,6 +198,164 @@ namespace Feasibility_study
                 if (!(Char.IsDigit(e.KeyChar)) && !((e.KeyChar == ',')) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
         }
+
+        private void CALC_DEVELOP_Click(object sender, EventArgs e)
+        {
+            double dn = 21;
+            double incom1;
+            int incom2;
+            double ITOGO_OZP = 0, Sum_Mat = 0;
+            int Tm = 0;
+            double Kp, Kr, Sm = 0, Km = 0;
+            double Sum_Ob = 0;
+            int Uk = 0; 
+            int Dk = 21 * 12;
+            int H = 0;
+            double tx = 0;
+            double sum = 0;
+            double ITOGO_Zatr = 0;
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
+
+                incom1 = incom1 / dn;
+                incom1 = Math.Round(incom1, 2);
+                row.Cells[2].Value = incom1; //Средняя дневная ставка 
+
+                dataGridView2.Rows[0].Cells[3].Value = ITOGO_day1;
+                dataGridView2.Rows[1].Cells[3].Value = ITOGO_day2;
+
+                incom2 = Convert.ToInt32(row.Cells[3].Value);
+                row.Cells[4].Value = incom1 * incom2;
+            }
+            if (textBox10.Text != "")
+                Wc = double.Parse(textBox10.Text); //накладные расходы  
+
+            if ((textBox6.Text != "") || (textBox7.Text != "") || (textBox8.Text != "") || (textBox9.Text != ""))
+                Wh = double.Parse(textBox6.Text) + double.Parse(textBox7.Text) + double.Parse(textBox8.Text) + double.Parse(textBox9.Text); // ПФ + ФСС + ФФОМС + Стра.взносы
+
+            if ((textBox4.Text != "") || (textBox5.Text != ""))
+                Wd = double.Parse(textBox4.Text) + double.Parse(textBox5.Text);  //коэффициент, учитывающий дополнительную заработную плату в долях к основной заработной плате 
+
+            if (textBox1.Text != "")
+                Tm = Convert.ToInt32(textBox1.Text) * ITOGO_day2; //машинное время компьютера
+
+            if (textBox2.Text != "")
+                Sm = double.Parse(textBox2.Text); //стоимость 1 часа машинного времени, 
+
+            if (textBox3.Text != "")
+                Km = double.Parse(textBox3.Text); //коэффициент мультипрограммности
+
+            foreach (DataGridViewRow row in dataGridView2.Rows)
+            {
+                ITOGO_OZP += Convert.ToDouble(row.Cells[4].Value);
+            }
+
+            foreach (DataGridViewRow row in dataGridView4.Rows)
+            {
+                Sum_Mat += Convert.ToDouble(row.Cells[4].Value);
+            }
+
+            Kp = ITOGO_OZP * ((1 + Wd) * (1 + Wh) + Wc) + Tm * Sm * Km + Sum_Mat; //Капитальнное вложение
+            Kp = Math.Round(Kp, 2); //Округлил до десятых
+            textBox11.Text = Kp.ToString();
+
+            if (textBox35.Text != "")
+                Uk = Convert.ToInt32(textBox35.Text);
+
+            if (textBox20.Text != "")
+                H = Convert.ToInt32(textBox20.Text); //норматив среднесуточной загрузки, час./день    
+
+            if (textBox29.Text != "")
+                tx = double.Parse(textBox29.Text);
+
+            foreach (DataGridViewRow row in dataGridView5.Rows) //Сумма оборудования
+            {
+                Sum_Ob += Convert.ToDouble(row.Cells[3].Value);
+            }
+
+            Kr = Math.Round(Sum_Ob * tx * Uk / (Dk * H), 2);
+            textBox12.Text = Kr.ToString();
+
+            //------------           
+            textBox13.Text = Math.Round(Kr + Kp, 2).ToString();
+
+            dataGridView13.Rows[0].Cells[1].Value = Math.Round(ITOGO_OZP, 2); //ОЗП
+            dataGridView13.Rows[1].Cells[1].Value = Math.Round(ITOGO_OZP * Wd, 2); //Дополнительная зарплата
+            dataGridView13.Rows[2].Cells[1].Value = Math.Round((ITOGO_OZP + (ITOGO_OZP * Wd)) * Wh, 2);// Отчисления на социальные нужды 
+            dataGridView13.Rows[3].Cells[1].Value = Math.Round(Sum_Mat, 2); //Затраты на материалы 
+            dataGridView13.Rows[4].Cells[1].Value = Math.Round(Tm * Sm, 2);
+            dataGridView13.Rows[5].Cells[1].Value = Math.Round(ITOGO_OZP * Wc, 2); //Накладные расходы организации 
+
+            for (int i = 0; i <= 5; i++)
+            {
+                sum += Convert.ToDouble(dataGridView13.Rows[i].Cells[1].Value);
+            }
+            dataGridView13.Rows[6].Cells[1].Value = sum; //ИТОГО 
+
+            foreach (DataGridViewRow row in dataGridView12.Rows)
+            {
+                ITOGO_Zatr += Convert.ToDouble(row.Cells[1].Value);
+            }
+            textBox31.Text = ITOGO_Zatr.ToString();
+        }
+
+        private void dataGridView4_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            double incom1, incom2;
+            foreach (DataGridViewRow row in dataGridView4.Rows)
+            {
+                incom1 = Convert.ToDouble(row.Cells[2].Value);
+                double.TryParse((row.Cells[3].Value ?? "0").ToString().Replace(".", ","), out incom2);
+                row.Cells[4].Value = incom1 * incom2;
+            }
+        }
+
+        private void dataGridView4_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb2 = (TextBox)e.Control;
+            tb2.KeyPress += new KeyPressEventHandler(tb2_KeyPress);
+        }
+        void tb2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (dataGridView4.Rows[dataGridView4.CurrentRow.Index].Cells[3].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',') && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+            if (dataGridView4.Rows[dataGridView4.CurrentRow.Index].Cells[2].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+        }
+
+        private void dataGridView5_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            double incom1, incom2;
+            foreach (DataGridViewRow row in dataGridView5.Rows)
+            {
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
+                incom2 = Convert.ToDouble(row.Cells[2].Value);
+                row.Cells[3].Value = incom1 * incom2;
+            }
+        }
+
+        private void dataGridView5_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb3 = (TextBox)e.Control;
+            tb3.KeyPress += new KeyPressEventHandler(tb3_KeyPress);
+        }
+        void tb3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (dataGridView5.Rows[dataGridView5.CurrentRow.Index].Cells[1].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',') && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+            if (dataGridView5.Rows[dataGridView5.CurrentRow.Index].Cells[2].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+        }
+
         private void Calc_Data_Click(object sender, EventArgs e)
         {
             DateTime date1 = new DateTime();
@@ -278,8 +454,13 @@ namespace Feasibility_study
             }
             ITOGO_day1 = day1;
             ITOGO_day2 = day2;
+
             TXTITOGORUK.Text = Convert.ToString(ITOGO_day1);
             TXTITOGOPROG.Text = Convert.ToString(ITOGO_day2);
+
+            dataGridView2.Rows[0].Cells[3].Value = ITOGO_day1;
+            dataGridView2.Rows[1].Cells[3].Value = ITOGO_day2;
+
         }
     }
 }

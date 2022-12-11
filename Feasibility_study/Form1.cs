@@ -104,8 +104,9 @@ namespace Feasibility_study
             dataGridView2.Rows.Add(2);
             dataGridView2.Rows[0].Cells[0].Value = "Руководитель";
             dataGridView2.Rows[1].Cells[0].Value = "Программист";
+
             dataGridView2.Rows[0].Cells[2].Value = "1";
-            dataGridView2.Rows[1].Cells[2].Value = "0";
+            dataGridView2.Rows[1].Cells[2].Value = "1";
 
             dataGridView13.Rows.Add(7);
             dataGridView13.Rows[0].Cells[0].Value = "Основная заработная плата";
@@ -115,6 +116,30 @@ namespace Feasibility_study
             dataGridView13.Rows[4].Cells[0].Value = "Затраты на машинное время";
             dataGridView13.Rows[5].Cells[0].Value = "Накладные расходы организации";
             dataGridView13.Rows[6].Cells[0].Value = "Итого";
+
+            dataGridView8.Rows.Add(7);
+            dataGridView8.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells; // Авто высота строк
+            dataGridView8.Rows[0].Cells[0].Value = "Основная и дополнительная зарплата с отчислениями во внебюджетные фонды";
+            dataGridView8.Rows[1].Cells[0].Value = "Амортизационные отчисления";
+            dataGridView8.Rows[2].Cells[0].Value = "Затраты на электроэнергию";
+            dataGridView8.Rows[3].Cells[0].Value = "Затраты на текущий ремонт";
+            dataGridView8.Rows[4].Cells[0].Value = "Затраты на материалы";
+            dataGridView8.Rows[5].Cells[0].Value = "Накладные расходы";
+            dataGridView8.Rows[6].Cells[0].Value = "Итого";
+
+            dataGridView9.Rows.Add(4);
+            dataGridView9.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells; // Авто высота строк
+            dataGridView9.Rows[0].Cells[0].Value = "Себестоимость (текущие эксплуатационные затраты), руб.";
+            dataGridView9.Rows[1].Cells[0].Value = "Суммарные затраты, связанные с внедрением проекта, руб.";
+            dataGridView9.Rows[2].Cells[0].Value = "Приведенные затраты на единицу работ, руб.";
+            dataGridView9.Rows[3].Cells[0].Value = "Экономический эффект от использования разрабатываемой системы, руб.";
+
+            dataGridView11.Rows.Add(5);
+            dataGridView11.Rows[0].Cells[0].Value = "Затраты на разработку и внедрение проекта, руб.";
+            dataGridView11.Rows[1].Cells[0].Value = "Общие эксплуатационные затраты, руб.";
+            dataGridView11.Rows[2].Cells[0].Value = "Экономический эффект, руб.";
+            dataGridView11.Rows[3].Cells[0].Value = "Коэффициент экономической эффективности";
+            dataGridView11.Rows[4].Cells[0].Value = "Срок окупаемости, лет";
 
             //Calc_Data_Click(sender,e);
         }
@@ -354,6 +379,302 @@ namespace Feasibility_study
             {
                 if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
+        }
+
+        private void CALC_ZATRATI_Click(object sender, EventArgs e)
+        {
+            double R = 0; //Районный коэф
+            if (textBox26.Text != "")
+                R = double.Parse(textBox26.Text);
+
+
+            double incom1;
+            int incom2;
+            int notnul = 0;
+            double incom3;
+            int incom4;
+
+            foreach (DataGridViewRow row in dataGridView6.Rows)
+            {
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
+                notnul = 21;
+                incom1 = incom1 / notnul;
+                row.Cells[2].Value = Math.Round(incom1, 2); //Средняя дневная ставка                 
+                incom2 = Convert.ToInt32(row.Cells[3].Value);
+                row.Cells[4].Value = Math.Round(incom1 * incom2 * (1 + Wh) * (1 + R), 2);
+            }
+
+            //-----            
+            foreach (DataGridViewRow row in dataGridView7.Rows)
+            {
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom3);
+                incom3 = incom3 / notnul;
+                notnul = 21;
+                row.Cells[2].Value = Math.Round(incom3, 2); //Средняя дневная ставка                 
+                incom4 = Convert.ToInt32(row.Cells[3].Value);
+                row.Cells[4].Value = Math.Round(incom3 * incom4 * (1 + Wh) * (1 + R), 2);
+            }
+            //----
+
+            int D = 21, H = 0;
+            if (textBox22.Text != "")
+                H = Convert.ToInt32(textBox22.Text); // Час/день
+
+            int Fe = H * D; //эффективный фонд времени работы оборудования в год, час            
+            double t1 = 0; // время работы j - гo вида оборудования, час (для проекта)
+            double t2 = 0; // время работы j - гo вида оборудования, час (для аналога)
+            double sum1 = 0, sum2 = 0; //Основная и дополнительная зарплата с отчислениями во внебюджетные фонды
+            double SumOb = 0; // Сумма (стоимость оборудования * шт)
+            double Ca1, Ca2; //Сумма амортизационных отчислений
+
+            double g = 0;//количество единиц оборудования j-гo вида.
+            foreach (DataGridViewRow row in dataGridView10.Rows)
+            { g += Convert.ToDouble(row.Cells[1].Value); }
+
+
+            double aj = 0; //норма годовых амортизационных отчислений для j-гo вида оборудования
+            if (textBox23.Text != "")
+                aj = double.Parse(textBox23.Text);
+
+            foreach (DataGridViewRow row in dataGridView6.Rows)
+            {
+                sum1 += Convert.ToDouble(row.Cells[4].Value);
+                t1 += Convert.ToDouble(row.Cells[3].Value);
+            }
+            foreach (DataGridViewRow row in dataGridView7.Rows)
+            {
+                sum2 += Convert.ToDouble(row.Cells[4].Value);
+                t2 += Convert.ToDouble(row.Cells[3].Value);
+            }
+
+            t1 = t1 * H; //Время работы оборудования
+            t2 = t2 * H;
+
+            foreach (DataGridViewRow row in dataGridView10.Rows)// Сумма (стоимость оборудования * шт)
+            { SumOb += Convert.ToDouble(row.Cells[3].Value); }
+
+            Ca1 = Math.Round((SumOb * aj * g * t1) / Fe, 2);
+            Ca2 = Math.Round((SumOb * aj * g * t2) / Fe, 2);
+
+            //--------Затраты на электроэнергию-----------------
+            double Ze1, Ze2; //Затраты на силовую энергию
+            double Ni = 0; //установленная мощность j-го вида технических средств, кВт;
+            if (textBox21.Text != "")
+                Ni = double.Parse(textBox21.Text);
+
+            double Te = 0; // тариф на электроэнергию, руб./ кВт ч.            
+            if (textBox14.Text != "")
+                Te = double.Parse(textBox14.Text);
+
+            double gi = 0; //коэффициент использования установленной мощности оборудования;
+            if (textBox24.Text != "")
+                gi = double.Parse(textBox24.Text);
+
+            Ze1 = Math.Round(Ni * gi * t1 * Te, 2);
+            Ze2 = Math.Round(Ni * gi * t2 * Te, 2);
+
+            //--------Затраты на текущий ремонт оборудования--------------------
+            double Cp = 0; //норматив затрат на ремонт
+            if (textBox25.Text != "")
+                Cp = double.Parse(textBox25.Text);
+
+            double ZrOb1, ZrOb2; //Затраты на текущий ремонт оборудования
+            ZrOb1 = Math.Round((Cp * SumOb * t1) / Fe, 2);
+            ZrOb2 = Math.Round((Cp * SumOb * t2) / Fe, 2);
+
+            //--------Затраты на материалы  ------------------
+            double Zm = 0; // Затраты на материалы, потребляемые в течение года          
+            if (textBox27.Text != "")
+                Zm = double.Parse(textBox27.Text);
+            double ZrM; //Затраты на материалы           
+            ZrM = Math.Round(SumOb * Zm, 2);
+
+            //--------Накладные расходы----------------------
+            double Proz = 0; //Норматив накладных расходов
+            if (textBox28.Text != "")
+                Proz = double.Parse(textBox28.Text);
+            double Zn1, Zn2; //Накладные расходы           
+            Zn1 = Math.Round((sum1 + Ca1 + Ze1 + ZrM + ZrOb1) * Proz, 2);
+            Zn2 = Math.Round((sum2 + Ca2 + Ze2 + ZrM + ZrOb2) * Proz, 2);
+
+            //--------ИТОГО
+            double Itog1 = sum1 + Ca1 + Ze1 + ZrOb1 + ZrM + Zn1;
+            double Itog2 = sum2 + Ca2 + Ze2 + ZrOb2 + ZrM + Zn2;
+
+            //--------
+            dataGridView8.Rows[0].Cells[1].Value = sum1;
+            dataGridView8.Rows[0].Cells[2].Value = sum2;
+            dataGridView8.Rows[1].Cells[1].Value = Ca1;
+            dataGridView8.Rows[1].Cells[2].Value = Ca2;
+            dataGridView8.Rows[2].Cells[1].Value = Ze1;
+            dataGridView8.Rows[2].Cells[2].Value = Ze2;
+            dataGridView8.Rows[3].Cells[1].Value = ZrOb1;
+            dataGridView8.Rows[3].Cells[2].Value = ZrOb2;
+            dataGridView8.Rows[4].Cells[1].Value = ZrM;
+            dataGridView8.Rows[4].Cells[2].Value = ZrM;
+            dataGridView8.Rows[5].Cells[1].Value = Zn1;
+            dataGridView8.Rows[5].Cells[2].Value = Zn2;
+            dataGridView8.Rows[6].Cells[1].Value = Itog1;
+            dataGridView8.Rows[6].Cells[2].Value = Itog2;
+        }
+
+        private void dataGridView10_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            double incom1, incom2;
+            foreach (DataGridViewRow row in dataGridView10.Rows)
+            {
+                double.TryParse((row.Cells[2].Value ?? "0").ToString().Replace(".", ","), out incom1);// Сумма оборудования
+                incom2 = Convert.ToDouble(row.Cells[1].Value);// Кол оборудования
+                row.Cells[3].Value = incom1 * incom2;// Сумма
+            }
+        }
+
+        private void dataGridView10_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb100 = (TextBox)e.Control;
+            tb100.KeyPress += new KeyPressEventHandler(tb100_KeyPress);
+        }
+        void tb100_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (dataGridView10.Rows[dataGridView10.CurrentRow.Index].Cells[2].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',') && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+            if (dataGridView10.Rows[dataGridView10.CurrentRow.Index].Cells[1].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+        }
+
+        private void dataGridView6_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+           double R = 0; //Районный коэф
+            if (textBox26.Text != "")
+            R = double.Parse(textBox26.Text); 
+            double incom1;
+            int incom2;
+            foreach (DataGridViewRow row in dataGridView6.Rows) 
+            {
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
+                incom1 = incom1 / 21;               
+                row.Cells[2].Value = Math.Round(incom1, 2); //Средняя дневная ставка                 
+                incom2 = Convert.ToInt32(row.Cells[3].Value);
+                row.Cells[4].Value = Math.Round(incom1*incom2*(1+Wh)*(1+R), 2); 
+            }
+        }
+
+        private void dataGridView6_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb4 = (TextBox)e.Control;
+            tb4.KeyPress += new KeyPressEventHandler(tb4_KeyPress);
+        }
+        void tb4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (dataGridView6.Rows[dataGridView6.CurrentRow.Index].Cells[1].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',') && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+            if (dataGridView6.Rows[dataGridView6.CurrentRow.Index].Cells[3].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+        }
+
+        private void dataGridView7_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            double R = 0; //Районный коэф
+            if (textBox26.Text != "")
+            R = double.Parse(textBox26.Text);
+            double incom1;
+            int incom2;
+            foreach (DataGridViewRow row in dataGridView7.Rows)
+            {
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
+                incom1 = incom1 / 21;
+                row.Cells[2].Value = Math.Round(incom1, 2); //Средняя дневная ставка                 
+                incom2 = Convert.ToInt32(row.Cells[3].Value);
+                row.Cells[4].Value = Math.Round(incom1 * incom2 * (1 + Wh) * (1 + R), 2);
+            }
+        }
+
+        private void dataGridView7_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            TextBox tb5 = (TextBox)e.Control;
+            tb5.KeyPress += new KeyPressEventHandler(tb5_KeyPress);
+        }
+        void tb5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (dataGridView7.Rows[dataGridView7.CurrentRow.Index].Cells[1].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',') && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+            if (dataGridView7.Rows[dataGridView7.CurrentRow.Index].Cells[3].IsInEditMode)
+            {
+                if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+            }
+        }
+
+        private void CALC_FINAL_Click(object sender, EventArgs e)
+        {
+            double Z1, Z2; //приведенные затраты на единицу работ, выполняемых с помощью базового и проектируемого вариантов процесса обработки информации, руб.;
+            double En = 0;  //нормативный коэффициент экономической эффективности
+            if (textBox8.Text != "")
+            { En = double.Parse(textBox8.Text); }
+            double Ki1 = 0, Ki2 = 0; //суммарные затраты, связанные с внедрением нового проекта. 
+            double Ci1 = 0, Ci2 = 0; //себестоимость (текущие эксплуатационные затраты единицы работ), руб.;
+
+            Ci1 = Convert.ToDouble(dataGridView8.Rows[6].Cells[2].Value);
+            Ci2 = Convert.ToDouble(dataGridView8.Rows[6].Cells[1].Value);
+
+            foreach (DataGridViewRow row in dataGridView12.Rows)
+            {
+                double incom1;
+                double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
+                Ki1 += incom1;
+            }
+            if (textBox6.Text != "")
+            { Ki2 = double.Parse(textBox6.Text); }
+
+            Z1 = Math.Round(Ci1 + En * Ki1, 2);
+            Z2 = Math.Round(Ci2 + En * Ki2, 2);
+
+            double E;
+            double Ak = 0;
+            if (textBox3.Text != "")
+            { Ak = double.Parse(textBox3.Text); }
+
+            E = Math.Round(Z1 * Ak - Z2, 2);
+
+            dataGridView9.Rows[0].Cells[1].Value = Ci1;
+            dataGridView9.Rows[0].Cells[2].Value = Ci2;
+            dataGridView9.Rows[1].Cells[1].Value = Ki1;
+            dataGridView9.Rows[1].Cells[2].Value = Ki2;
+            dataGridView9.Rows[2].Cells[1].Value = Z1;
+            dataGridView9.Rows[2].Cells[2].Value = Z2;
+            dataGridView9.Rows[3].Cells[1].Value = E;
+            dataGridView9.Rows[3].Cells[2].Value = E;
+
+            //------------------------------------
+
+            double Tok = 0;
+            Tok = Math.Round(Ki2 / E, 2); //срок окупаемости затрат на разработку
+            double Ef = 0;
+            Ef = Math.Round(1 / Tok, 2); //фактический коэффициент экономической эффективности разработки
+
+            dataGridView11.Rows[0].Cells[1].Value = Ki2;
+            dataGridView11.Rows[1].Cells[1].Value = Ci2;
+            dataGridView11.Rows[2].Cells[1].Value = E;
+            dataGridView11.Rows[3].Cells[1].Value = Ef;
+            dataGridView11.Rows[4].Cells[1].Value = Tok;
+            //------------------------------------
+
+            if (En < Ef)
+                label37.Text = "Проект эффективен";
+            else label37.Text = "Проект не эффективен";
+
         }
 
         private void Calc_Data_Click(object sender, EventArgs e)

@@ -141,7 +141,6 @@ namespace Feasibility_study
             dataGridView11.Rows[3].Cells[0].Value = "Коэффициент экономической эффективности";
             dataGridView11.Rows[4].Cells[0].Value = "Срок окупаемости, лет";
 
-            //Calc_Data_Click(sender,e);
         }
 
         private void btn_about_Click(object sender, EventArgs e)
@@ -149,20 +148,17 @@ namespace Feasibility_study
             about a1 = new about();
             a1.Show();
         }
-
         private void btn_start_Click(object sender, EventArgs e)
         {
             btn_about.Visible = false;
             btn_start.Visible = false;
             btn_spravka.Visible = false;
-
             tabControl1.Visible = true;
         }
         private void btn_spravka_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("ТЭО справка.pdf");
         }
-
         private void Calc_KTC_Click(object sender, EventArgs e)
         {
             double sum1 = 0;
@@ -191,7 +187,6 @@ namespace Feasibility_study
                 outak.Text = sum1.ToString();
             }
         }
-
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -204,7 +199,6 @@ namespace Feasibility_study
                 row.Cells[5].Value = incom1 * incom3;
             }
         }
-
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox tb = (TextBox)e.Control;
@@ -223,10 +217,9 @@ namespace Feasibility_study
                 if (!(Char.IsDigit(e.KeyChar)) && !((e.KeyChar == ',')) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
         }
-
         private void CALC_DEVELOP_Click(object sender, EventArgs e)
         {
-            double dn = 21;
+            int dn = 21;
             double incom1;
             int incom2;
             double ITOGO_OZP = 0, Sum_Mat = 0;
@@ -239,6 +232,7 @@ namespace Feasibility_study
             double tx = 0;
             double sum = 0;
             double ITOGO_Zatr = 0;
+
             foreach (DataGridViewRow row in dataGridView2.Rows)
             {
                 double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
@@ -253,6 +247,12 @@ namespace Feasibility_study
                 incom2 = Convert.ToInt32(row.Cells[3].Value);
                 row.Cells[4].Value = incom1 * incom2;
             }
+            if (textBox19.Text != "")
+                dn = int.Parse(textBox19.Text);
+
+            if (textBox30.Text != "")
+                Dk = int.Parse(textBox30.Text);
+
             if (textBox10.Text != "")
                 Wc = double.Parse(textBox10.Text); //накладные расходы  
 
@@ -263,7 +263,7 @@ namespace Feasibility_study
                 Wd = double.Parse(textBox4.Text) + double.Parse(textBox5.Text);  //коэффициент, учитывающий дополнительную заработную плату в долях к основной заработной плате 
 
             if (textBox1.Text != "")
-                Tm = Convert.ToInt32(textBox1.Text) * ITOGO_day2; //машинное время компьютера
+                Tm = Convert.ToInt32(textBox1.Text); //машинное время компьютера
 
             if (textBox2.Text != "")
                 Sm = double.Parse(textBox2.Text); //стоимость 1 часа машинного времени, 
@@ -309,7 +309,7 @@ namespace Feasibility_study
             dataGridView13.Rows[1].Cells[1].Value = Math.Round(ITOGO_OZP * Wd, 2); //Дополнительная зарплата
             dataGridView13.Rows[2].Cells[1].Value = Math.Round((ITOGO_OZP + (ITOGO_OZP * Wd)) * Wh, 2);// Отчисления на социальные нужды 
             dataGridView13.Rows[3].Cells[1].Value = Math.Round(Sum_Mat, 2); //Затраты на материалы 
-            dataGridView13.Rows[4].Cells[1].Value = Math.Round(Tm * Sm, 2);
+            dataGridView13.Rows[4].Cells[1].Value = Math.Round(Tm * Sm, 2); //
             dataGridView13.Rows[5].Cells[1].Value = Math.Round(ITOGO_OZP * Wc, 2); //Накладные расходы организации 
 
             for (int i = 0; i <= 5; i++)
@@ -324,7 +324,6 @@ namespace Feasibility_study
             }
             textBox31.Text = ITOGO_Zatr.ToString();
         }
-
         private void dataGridView4_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             double incom1, incom2;
@@ -335,7 +334,6 @@ namespace Feasibility_study
                 row.Cells[4].Value = incom1 * incom2;
             }
         }
-
         private void dataGridView4_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox tb2 = (TextBox)e.Control;
@@ -352,7 +350,6 @@ namespace Feasibility_study
                 if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
         }
-
         private void dataGridView5_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             double incom1, incom2;
@@ -363,7 +360,6 @@ namespace Feasibility_study
                 row.Cells[3].Value = incom1 * incom2;
             }
         }
-
         private void dataGridView5_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox tb3 = (TextBox)e.Control;
@@ -380,20 +376,32 @@ namespace Feasibility_study
                 if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
         }
-
         private void CALC_ZATRATI_Click(object sender, EventArgs e)
         {
             double R = 0; //Районный коэф
-            if (textBox26.Text != "")
-                R = double.Parse(textBox26.Text);
-
-
             double incom1;
+            int D = 21,Dk = 247, H = 0;
             int incom2;
             int notnul = 0;
             double incom3;
             int incom4;
-
+            double t1 = 0; // время работы j - гo вида оборудования, час (для проекта)
+            double t2 = 0; // время работы j - гo вида оборудования, час (для аналога)
+            double sum1 = 0, sum2 = 0; //Основная и дополнительная зарплата с отчислениями во внебюджетные фонды
+            double SumOb = 0; // Сумма (стоимость оборудования * шт)
+            double Ca1, Ca2; //Сумма амортизационных отчислений
+            double aj = 0; //норма годовых амортизационных отчислений для j-гo вида оборудования
+            double g = 0;//количество единиц оборудования j-гo вида.
+            double Ze1, Ze2; //Затраты на силовую энергию
+            double Ni = 0; //установленная мощность j-го вида технических средств, кВт;
+            double Te = 0; // тариф на электроэнергию, руб./ кВт ч.            
+            double gi = 0; //коэффициент использования установленной мощности оборудования;
+            double Cp = 0; //норматив затрат на ремонт
+            double ZrOb1, ZrOb2; //Затраты на текущий ремонт оборудования
+            double Zm = 0; // Затраты на материалы, потребляемые в течение года 
+            double ZrM; //Затраты на материалы  
+            double Proz = 0; //Норматив накладных расходов
+            double balance = 0;
             foreach (DataGridViewRow row in dataGridView6.Rows)
             {
                 double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
@@ -403,8 +411,6 @@ namespace Feasibility_study
                 incom2 = Convert.ToInt32(row.Cells[3].Value);
                 row.Cells[4].Value = Math.Round(incom1 * incom2 * (1 + Wh) * (1 + R), 2);
             }
-
-            //-----            
             foreach (DataGridViewRow row in dataGridView7.Rows)
             {
                 double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom3);
@@ -414,27 +420,48 @@ namespace Feasibility_study
                 incom4 = Convert.ToInt32(row.Cells[3].Value);
                 row.Cells[4].Value = Math.Round(incom3 * incom4 * (1 + Wh) * (1 + R), 2);
             }
-            //----
 
-            int D = 21, H = 0;
+            if (textBox17.Text != "")
+                balance = double.Parse(textBox17.Text);
+
+            if (textBox26.Text != "")
+                R = double.Parse(textBox26.Text);
+
+            if (textBox21.Text != "")
+                Ni = double.Parse(textBox21.Text);
+
+            if (textBox14.Text != "")
+                Te = double.Parse(textBox14.Text);
+
+            if (textBox24.Text != "")
+                gi = double.Parse(textBox24.Text);
+
             if (textBox22.Text != "")
-                H = Convert.ToInt32(textBox22.Text); // Час/день
+                H = int.Parse(textBox22.Text);
 
-            int Fe = H * D; //эффективный фонд времени работы оборудования в год, час            
-            double t1 = 0; // время работы j - гo вида оборудования, час (для проекта)
-            double t2 = 0; // время работы j - гo вида оборудования, час (для аналога)
-            double sum1 = 0, sum2 = 0; //Основная и дополнительная зарплата с отчислениями во внебюджетные фонды
-            double SumOb = 0; // Сумма (стоимость оборудования * шт)
-            double Ca1, Ca2; //Сумма амортизационных отчислений
+            if (textBox16.Text != "")
+                D = int.Parse(textBox22.Text); 
 
-            double g = 0;//количество единиц оборудования j-гo вида.
-            foreach (DataGridViewRow row in dataGridView10.Rows)
-            { g += Convert.ToDouble(row.Cells[1].Value); }
-
-
-            double aj = 0; //норма годовых амортизационных отчислений для j-гo вида оборудования
             if (textBox23.Text != "")
                 aj = double.Parse(textBox23.Text);
+            
+            if (textBox27.Text != "")
+                Zm = double.Parse(textBox27.Text);
+            
+            if (textBox25.Text != "")
+                Cp = double.Parse(textBox25.Text);
+
+            if (textBox28.Text != "")
+                Proz = double.Parse(textBox28.Text);
+
+            if (textBox28.Text != "")
+                Proz = double.Parse(textBox28.Text);
+
+            if (textBox18.Text != "")
+                 Dk = int.Parse(textBox18.Text);
+
+            if (textBox32.Text != "")
+                 g = int.Parse(textBox32.Text);
 
             foreach (DataGridViewRow row in dataGridView6.Rows)
             {
@@ -450,58 +477,27 @@ namespace Feasibility_study
             t1 = t1 * H; //Время работы оборудования
             t2 = t2 * H;
 
-            foreach (DataGridViewRow row in dataGridView10.Rows)// Сумма (стоимость оборудования * шт)
-            { SumOb += Convert.ToDouble(row.Cells[3].Value); }
-
-            Ca1 = Math.Round((SumOb * aj * g * t1) / Fe, 2);
-            Ca2 = Math.Round((SumOb * aj * g * t2) / Fe, 2);
-
+            int Fe = H * Dk; //эффективный фонд времени работы оборудования в год, час            
+           
+            Ca1 = Math.Round((balance * aj * g * t1) / Fe, 2);
+            Ca2 = Math.Round((balance * aj * g * t2) / Fe, 2);
             //--------Затраты на электроэнергию-----------------
-            double Ze1, Ze2; //Затраты на силовую энергию
-            double Ni = 0; //установленная мощность j-го вида технических средств, кВт;
-            if (textBox21.Text != "")
-                Ni = double.Parse(textBox21.Text);
-
-            double Te = 0; // тариф на электроэнергию, руб./ кВт ч.            
-            if (textBox14.Text != "")
-                Te = double.Parse(textBox14.Text);
-
-            double gi = 0; //коэффициент использования установленной мощности оборудования;
-            if (textBox24.Text != "")
-                gi = double.Parse(textBox24.Text);
-
-            Ze1 = Math.Round(Ni * gi * t1 * Te, 2);
-            Ze2 = Math.Round(Ni * gi * t2 * Te, 2);
-
+            Ze1 = Math.Round(Ni * g * t1 * Te, 2);
+            Ze2 = Math.Round(Ni * g * t2 * Te, 2);
             //--------Затраты на текущий ремонт оборудования--------------------
-            double Cp = 0; //норматив затрат на ремонт
-            if (textBox25.Text != "")
-                Cp = double.Parse(textBox25.Text);
-
-            double ZrOb1, ZrOb2; //Затраты на текущий ремонт оборудования
-            ZrOb1 = Math.Round((Cp * SumOb * t1) / Fe, 2);
-            ZrOb2 = Math.Round((Cp * SumOb * t2) / Fe, 2);
-
-            //--------Затраты на материалы  ------------------
-            double Zm = 0; // Затраты на материалы, потребляемые в течение года          
-            if (textBox27.Text != "")
-                Zm = double.Parse(textBox27.Text);
-            double ZrM; //Затраты на материалы           
-            ZrM = Math.Round(SumOb * Zm, 2);
-
+            ZrOb1 = Math.Round((Cp * balance * t1) / Fe, 2);
+            ZrOb2 = Math.Round((Cp * balance * t2) / Fe, 2);
+            //--------Затраты на материалы  ------------------       
+            ZrM = Math.Round(balance * Zm, 2);
             //--------Накладные расходы----------------------
-            double Proz = 0; //Норматив накладных расходов
-            if (textBox28.Text != "")
-                Proz = double.Parse(textBox28.Text);
+
             double Zn1, Zn2; //Накладные расходы           
             Zn1 = Math.Round((sum1 + Ca1 + Ze1 + ZrM + ZrOb1) * Proz, 2);
             Zn2 = Math.Round((sum2 + Ca2 + Ze2 + ZrM + ZrOb2) * Proz, 2);
 
-            //--------ИТОГО
             double Itog1 = sum1 + Ca1 + Ze1 + ZrOb1 + ZrM + Zn1;
             double Itog2 = sum2 + Ca2 + Ze2 + ZrOb2 + ZrM + Zn2;
 
-            //--------
             dataGridView8.Rows[0].Cells[1].Value = sum1;
             dataGridView8.Rows[0].Cells[2].Value = sum2;
             dataGridView8.Rows[1].Cells[1].Value = Ca1;
@@ -517,36 +513,6 @@ namespace Feasibility_study
             dataGridView8.Rows[6].Cells[1].Value = Itog1;
             dataGridView8.Rows[6].Cells[2].Value = Itog2;
         }
-
-        private void dataGridView10_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            double incom1, incom2;
-            foreach (DataGridViewRow row in dataGridView10.Rows)
-            {
-                double.TryParse((row.Cells[2].Value ?? "0").ToString().Replace(".", ","), out incom1);// Сумма оборудования
-                incom2 = Convert.ToDouble(row.Cells[1].Value);// Кол оборудования
-                row.Cells[3].Value = incom1 * incom2;// Сумма
-            }
-        }
-
-        private void dataGridView10_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            TextBox tb100 = (TextBox)e.Control;
-            tb100.KeyPress += new KeyPressEventHandler(tb100_KeyPress);
-        }
-        void tb100_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (dataGridView10.Rows[dataGridView10.CurrentRow.Index].Cells[2].IsInEditMode)
-            {
-                if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',') && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
-            }
-            if (dataGridView10.Rows[dataGridView10.CurrentRow.Index].Cells[1].IsInEditMode)
-            {
-                if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
-            }
-        }
-
         private void dataGridView6_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
            double R = 0; //Районный коэф
@@ -563,7 +529,6 @@ namespace Feasibility_study
                 row.Cells[4].Value = Math.Round(incom1*incom2*(1+Wh)*(1+R), 2); 
             }
         }
-
         private void dataGridView6_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox tb4 = (TextBox)e.Control;
@@ -581,7 +546,6 @@ namespace Feasibility_study
                 if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
             }
         }
-
         private void dataGridView7_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             double R = 0; //Районный коэф
@@ -598,7 +562,6 @@ namespace Feasibility_study
                 row.Cells[4].Value = Math.Round(incom1 * incom2 * (1 + Wh) * (1 + R), 2);
             }
         }
-
         private void dataGridView7_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             TextBox tb5 = (TextBox)e.Control;
@@ -621,10 +584,22 @@ namespace Feasibility_study
         {
             double Z1, Z2; //приведенные затраты на единицу работ, выполняемых с помощью базового и проектируемого вариантов процесса обработки информации, руб.;
             double En = 0;  //нормативный коэффициент экономической эффективности
-            if (textBox8.Text != "")
-            { En = double.Parse(textBox8.Text); }
             double Ki1 = 0, Ki2 = 0; //суммарные затраты, связанные с внедрением нового проекта. 
             double Ci1 = 0, Ci2 = 0; //себестоимость (текущие эксплуатационные затраты единицы работ), руб.;
+            double E;
+            double Ak = 0;
+
+            if (textBox8.Text != "")
+                En = double.Parse(textBox15.Text);
+
+            if (textBox13.Text != "")
+                Ki2 = double.Parse(textBox6.Text);
+
+            if (textBox13.Text != "")
+                Ki2 = double.Parse(textBox6.Text);
+
+            if (outak.Text != "")
+                Ak = double.Parse(outak.Text);
 
             Ci1 = Convert.ToDouble(dataGridView8.Rows[6].Cells[2].Value);
             Ci2 = Convert.ToDouble(dataGridView8.Rows[6].Cells[1].Value);
@@ -635,17 +610,9 @@ namespace Feasibility_study
                 double.TryParse((row.Cells[1].Value ?? "0").ToString().Replace(".", ","), out incom1);
                 Ki1 += incom1;
             }
-            if (textBox6.Text != "")
-            { Ki2 = double.Parse(textBox6.Text); }
 
             Z1 = Math.Round(Ci1 + En * Ki1, 2);
             Z2 = Math.Round(Ci2 + En * Ki2, 2);
-
-            double E;
-            double Ak = 0;
-            if (textBox3.Text != "")
-            { Ak = double.Parse(textBox3.Text); }
-
             E = Math.Round(Z1 * Ak - Z2, 2);
 
             dataGridView9.Rows[0].Cells[1].Value = Ci1;
@@ -676,7 +643,6 @@ namespace Feasibility_study
             else label37.Text = "Проект не эффективен";
 
         }
-
         private void Calc_Data_Click(object sender, EventArgs e)
         {
             DateTime date1 = new DateTime();
@@ -783,5 +749,127 @@ namespace Feasibility_study
             dataGridView2.Rows[1].Cells[3].Value = ITOGO_day2;
 
         }
+
+        /*
+        private void textBox8_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox8.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox13_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox13.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox15_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox15.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox14_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox14.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox17_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox17.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox16_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox16.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox18_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox19_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox20_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox9_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox9.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox10_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox10.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox11_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox11.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox12.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox21_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox21.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox24_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox24.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox23_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox23.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox22_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox22.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox25_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox25.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox26_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox26.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox27_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox27.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox28_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox28.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox29_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox29.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox7_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && !(e.KeyChar == ',' && textBox7.Text.IndexOf(",") == -1) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+
+        private void textBox30_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(Char.IsDigit(e.KeyChar)) && (e.KeyChar != (char)Keys.Back)) { e.Handled = true; }
+        }
+        */
     }
 }
